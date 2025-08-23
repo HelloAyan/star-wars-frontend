@@ -3,6 +3,8 @@ import axios from "axios";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ProductGrid = () => {
     const [characters, setCharacters] = useState([]);
     const [search, setSearch] = useState("");
@@ -18,8 +20,7 @@ const ProductGrid = () => {
         setLoading(true);
         try {
             const res = await axios.get(
-                `https://star-wars-backend-hne5.onrender.com/characters?${searchText ? `search=${searchText}&` : ""
-                }page=${currentPage}`
+                `${API_URL}/characters?${searchText ? `search=${searchText}&` : ""}page=${currentPage}`
             );
             setCharacters(res.data.results || []);
             setTotalPages(Math.ceil(res.data.total / itemsPerPage) || 1);
