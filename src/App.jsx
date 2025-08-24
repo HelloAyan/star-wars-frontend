@@ -1,4 +1,4 @@
-import ProductGrid from "./Routes/components/ProductGrid"
+import ProductGrid from "./components/ProductGrid"
 
 function App() {
 
